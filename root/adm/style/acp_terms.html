@@ -1,0 +1,41 @@
+<!-- INCLUDE overall_header.html -->
+
+<a name="maincontent"></a>
+<h1>{TITLE}</h1>
+<p>{TITLE_EXPLAIN}</p>
+
+<form id="settings" method="post" action="{U_ACTION}">
+		<!-- BEGIN lang -->
+		<fieldset>
+			<legend>{lang.NAME} ({lang.ISO})</legend>
+			<dl>
+				<dt><label for="type_{lang.DIR}">{L_ACP_TERMS_TYPE}:</label><br />{L_ACP_TERMS_TYPE_EXPLAIN}</dt>
+				<dd>
+					<label><input type="radio" class="radio" name="type[{lang.DIR}]" value="0"<!-- IF lang.TERMS_DEFAUT --> checked="checked" id="type_{lang.DIR}"<!-- ENDIF --> /> {L_ACP_TERMS_TYPE_DEFAUT}</label>
+					<label><input type="radio" class="radio" name="type[{lang.DIR}]" value="1"<!-- IF lang.TERMS_USER --> checked="checked" id="type_{lang.DIR}"<!-- ENDIF --> /> {L_ACP_TERMS_TYPE_USER}</label>
+					<label><input type="radio" class="radio" name="type[{lang.DIR}]" value="2"<!-- IF lang.TERMS_POST --> checked="checked" id="type_{lang.DIR}"<!-- ENDIF --> /> {L_ACP_TERMS_TYPE_POST}</label>
+				</dd>
+			</dl>
+			<dl>
+				<dt><label for="terms_{lang.DIR}">{L_ACP_TERMS_TOPIC}:</label><br />{L_ACP_TERMS_TOPIC_EXPLAIN}</dt>
+				<dd>
+					<label><input type="text" size="6" name="post[{lang.DIR}]" id="post[{lang.DIR}]" value="{lang.TERMS_POST_ID}" /></label>
+				</dd>
+			</dl>
+			<dl>
+				<dt><label for="terms_{lang.DIR}">{L_ACP_TERMS_EDIT}:</label><br />{L_ACP_TERMS_EDIT_EXPLAIN}</dt>
+				<dd>
+					<label><input type="button" class="button2" id="prefill_{lang.DIR}" name="prefill[{lang.DIR}]" value="{L_ACP_TERMS_PREFILL}" onclick="terms_{lang.DIR}.value='{lang.DEFAUT_TERM}'"/></label>
+					<label><textarea name="terms[{lang.DIR}]" id="terms_{lang.DIR}" rows="10" cols="60" style="width: 95%;">{lang.TERMS}</textarea></label>
+				</dd>
+			</dl>
+		</fieldset>
+		<!-- END lang -->
+				
+		<p class="submit-buttons">
+			<input class="button1" type="submit" id="submit" name="update" value="{L_SUBMIT}" />&nbsp;
+			<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+		</p>
+	</form>
+
+<!-- INCLUDE overall_footer.html -->
