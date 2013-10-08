@@ -59,12 +59,12 @@ $versions = array(
 	'1.0.0' => array(
 
 		'table_column_add' => array(
-			array(LANG_TABLE, 'terms_display', array('TINT:1', '0')),
-			array(LANG_TABLE, 'terms_post', array('UINT', '0')),
+			array(LANG_TABLE, 'terms_display', array('TINT:1', 0)),
+			array(LANG_TABLE, 'terms_post', array('UINT', 0)),
 			array(LANG_TABLE, 'terms', array('TEXT', '')),
 			array(LANG_TABLE, 'terms_bbcode_uid', array('VCHAR:8', '')),
 			array(LANG_TABLE, 'terms_bbcode_bitfield', array('VCHAR', '')),
-			array(LANG_TABLE, 'terms_bbcode_options', array('UINT', '0')),
+			array(LANG_TABLE, 'terms_bbcode_options', array('UINT', 0)),
 		),
 
 		'module_add' => array(
