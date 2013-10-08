@@ -59,7 +59,7 @@ function terms_get_defaut_terms($dir)
 
 	require($phpbb_root_path.'language/'.$dir.'/ucp.'.$phpEx);
 	$return = trim($lang['TERMS_OF_USE_CONTENT']);
-	$return = str_replace(array('<br />', "\n"), array('', '\n'), $return);
+	$return = str_replace(array('<br />', "\n", "'"), array('', '\n', "\'"), $return);
 	$return = sprintf($return, $config['sitename'], generate_board_url());
 	return preg_replace('#<a href="(https?://[a-zA-Z0-9.-]+.+)">(.+)</a>#iU', '[url=$1]$2[/url]', $return);
 }

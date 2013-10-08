@@ -1,5 +1,13 @@
 <!-- INCLUDE overall_header.html -->
 
+<script type="text/javascript">
+// <![CDATA[
+<!-- BEGIN lang -->
+   var terms_prefill_{lang.DIR} = '{lang.DEFAUT_TERM}';
+<!-- END lang -->
+// ]]>
+</script>
+
 <a name="maincontent"></a>
 <h1>{TITLE}</h1>
 <p>{TITLE_EXPLAIN}</p>
@@ -25,7 +33,7 @@
 			<dl>
 				<dt><label for="terms_{lang.DIR}">{L_ACP_TERMS_EDIT}:</label><br />{L_ACP_TERMS_EDIT_EXPLAIN}</dt>
 				<dd>
-					<label><input type="button" class="button2" id="prefill_{lang.DIR}" name="prefill[{lang.DIR}]" value="{L_ACP_TERMS_PREFILL}" onclick="terms_{lang.DIR}.value='{lang.DEFAUT_TERM}'"/></label>
+					<label><input type="button" class="button2" id="prefill_{lang.DIR}" name="prefill[{lang.DIR}]" value="{L_ACP_TERMS_PREFILL}" onclick="terms_{lang.DIR}.value=terms_prefill_{lang.DIR}"/></label>
 					<label><textarea name="terms[{lang.DIR}]" id="terms_{lang.DIR}" rows="10" cols="60" style="width: 95%;">{lang.TERMS}</textarea></label>
 				</dd>
 			</dl>
