@@ -45,12 +45,12 @@ $lang = array_merge($lang, array(
 	'ACP_TERMS_TYPE_DEFAUT'		=> 'Par défaut',
 	'ACP_TERMS_TYPE_POST'		=> 'Message',
 	'ACP_TERMS_TYPE_USER'		=> 'Tel que défini',
-	'ACP_TERMS_TYPE_EXPLAIN'	=> '- Choisissez “Par défaut” pour laisser les conditions d’utilisation par défaut.<br />- Choisissez “Message” pour utiliser le contenu d’un message comme conditions d’utilisation.<br />- Choisissez “Tel que défini” pour utiliser le texte écrit dans la case juste en dessous comme conditions d’utilisation.',
+	'ACP_TERMS_TYPE_EXPLAIN'	=> '- Choisissez «Par défaut» pour laisser les conditions d’utilisation par défaut.<br />- Choisissez «Message» pour utiliser le contenu d’un message comme conditions d’utilisation.<br />- Choisissez «Tel que défini» pour utiliser le texte écrit dans la case juste en dessous comme conditions d’utilisation.',
 	'ACP_TERMS_TOPIC'			=> 'ID du message des conditions d’utilisation',
-	'ACP_TERMS_TOPIC_EXPLAIN'	=> 'Si vous avez choisi “Message” juste au dessus, entrez ici l’ID du message à utiliser comme conditions d’utilisation.',
+	'ACP_TERMS_TOPIC_EXPLAIN'	=> 'Si vous avez choisi «Message» juste au dessus, entrez ici l’ID du message à utiliser comme conditions d’utilisation.',
 	'ACP_TERMS_PREFILL'			=> 'Préremplir avec les conditions d’utilisation par défaut',
 	'ACP_TERMS_EDIT'			=> 'Conditions d’utilisation ',
-	'ACP_TERMS_EDIT_EXPLAIN'	=> 'Si vous avez choisi “Tel que défini” juste au dessus, entrez les conditions d’utilisation à afficher ici. Vous pouvez préremplir la case avec les conditions d’utilisation par défaut de phpBB en cliquant sur le bouton “Préremplir avec les conditions d’utilisation par défaut”.',
+	'ACP_TERMS_EDIT_EXPLAIN'	=> 'Si vous avez choisi «Tel que défini» juste au dessus, entrez les conditions d’utilisation à afficher ici. Vous pouvez préremplir la case avec les conditions d’utilisation par défaut de phpBB en cliquant sur le bouton «Préremplir avec les conditions d’utilisation par défaut».',
 ));
 
 $lang = array_merge($lang, array(
