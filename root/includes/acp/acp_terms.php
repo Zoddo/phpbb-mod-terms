@@ -92,7 +92,9 @@ class acp_terms
 				}
 				else if($val == TERMS_DISP_POST)
 				{
-					$sql = 'SELECT COUNT(post_id) AS count FROM ' . POSTS_TABLE . ' WHERE post_id = '.(int) $config_post[$lng];
+					$sql = 'SELECT COUNT(post_id) AS count
+						FROM ' . POSTS_TABLE . '
+						WHERE post_id = '.(int) $config_post[$lng];
 					$result = $db->sql_query($sql);
 					$row = $db->sql_fetchrow($result);
 					$db->sql_freeresult($result);

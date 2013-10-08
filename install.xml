@@ -79,7 +79,9 @@
 			}
 			else if(terms_get('terms_display') == TERMS_DISP_POST)
 			{
-				$sql = 'SELECT COUNT(post_id) AS count FROM ' . POSTS_TABLE . ' WHERE post_id = ' . (int) terms_get('terms_post');
+				$sql = 'SELECT COUNT(post_id) AS count
+					FROM ' . POSTS_TABLE . '
+					WHERE post_id = ' . (int) terms_get('terms_post');
 				$result = $db->sql_query($sql);
 				$row = $db->sql_fetchrow($result);
 				$db->sql_freeresult($result);
@@ -93,7 +95,9 @@
 				}
 				else
 				{
-					$sql = 'SELECT post_text,bbcode_uid,bbcode_bitfield,enable_bbcode,enable_smilies,enable_magic_url FROM ' . POSTS_TABLE . ' WHERE post_id = '.(int) terms_get('terms_post');
+					$sql = 'SELECT post_text,bbcode_uid,bbcode_bitfield,enable_bbcode,enable_smilies,enable_magic_url
+						FROM ' . POSTS_TABLE . '
+						WHERE post_id = '.(int) terms_get('terms_post');
 					$result = $db->sql_query($sql);
 					$row = $db->sql_fetchrow($result);
 					$db->sql_freeresult($result);
@@ -157,7 +161,9 @@
 				}
 				else if(terms_get('terms_display') == TERMS_DISP_POST)
 				{
-					$sql = 'SELECT COUNT(post_id) AS count FROM ' . POSTS_TABLE . ' WHERE post_id = ' . (int) terms_get('terms_post');
+					$sql = 'SELECT COUNT(post_id) AS count
+						FROM ' . POSTS_TABLE . '
+						WHERE post_id = ' . (int) terms_get('terms_post');
 					$result = $db->sql_query($sql);
 					$row = $db->sql_fetchrow($result);
 					$db->sql_freeresult($result);
@@ -172,8 +178,8 @@
 					else
 					{
 						$sql = 'SELECT post_text,bbcode_uid,bbcode_bitfield,enable_bbcode,enable_smilies,enable_magic_url
-								FROM ' . POSTS_TABLE . '
-								WHERE post_id = ' . (int) terms_get('terms_post');
+							FROM ' . POSTS_TABLE . '
+							WHERE post_id = ' . (int) terms_get('terms_post');
 						$result = $db->sql_query($sql);
 						$row = $db->sql_fetchrow($result);
 						$db->sql_freeresult($result);

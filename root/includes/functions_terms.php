@@ -21,7 +21,9 @@ function terms_update($lang, array $sql_ary)
 {
 	global $db, $cache;
 
-	$sql = 'UPDATE ' . LANG_TABLE . ' SET ' . $db->sql_build_array('UPDATE', $sql_ary) . " WHERE lang_dir = '".$db->sql_escape($lang)."'";
+	$sql = 'UPDATE ' . LANG_TABLE . '
+		SET ' . $db->sql_build_array('UPDATE', $sql_ary) . "
+		WHERE lang_dir = '".$db->sql_escape($lang)."'";
 	$db->sql_query($sql);
 	
 	if(($cache_ary = $cache->get('terms')) === false || is_array($cache_ary) || is_array($cache_ary[$lang]))
@@ -40,7 +42,8 @@ function terms_get($value)
 	$cache_ary = $cache->get('terms');
 	if(!isset($cache_ary[$user->data['user_lang']][$value]))
 	{
-		$sql = 'SELECT * FROM ' . LANG_TABLE . " WHERE lang_dir = '".$db->sql_escape($user->data['user_lang'])."'";
+		$sql = 'SELECT * FROM ' . LANG_TABLE . "
+			WHERE lang_dir = '".$db->sql_escape($user->data['user_lang'])."'";
 		$result = $db->sql_query($sql);
 		$row = $db->sql_fetchrow($result);
 		$db->sql_freeresult($result);
