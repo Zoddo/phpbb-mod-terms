@@ -79,7 +79,7 @@
 			}
 			else if(terms_get('terms_display') == TERMS_DISP_POST)
 			{
-				$sql = 'SELECT COUNT(post_id) AS count FROM ' . POSTS_TABLE . ' WHERE post_id = '.(int) terms_get('terms_post');
+				$sql = 'SELECT COUNT(post_id) AS count FROM ' . POSTS_TABLE . ' WHERE post_id = ' . (int) terms_get('terms_post');
 				$result = $db->sql_query($sql);
 				$row = $db->sql_fetchrow($result);
 				$db->sql_freeresult($result);
@@ -117,7 +117,9 @@
 			<edit>
 				<find><![CDATA[			'AGREEMENT_TEXT'		=> sprintf($user->lang[$message], $config['sitename'], generate_board_url()),]]></find>
 				<action type="replace-with"><![CDATA[			//-- Modification of Terms of Use - Delete BEGIN --\\
-			//'AGREEMENT_TEXT'		=> sprintf($user->lang[$message], $config['sitename'], generate_board_url()),
+			/*
+			'AGREEMENT_TEXT'		=> sprintf($user->lang[$message], $config['sitename'], generate_board_url()),
+			*/
 			//-- Modification of Terms of Use - Delete END --\\]]></action>
 			</edit>
 		</open>
@@ -155,7 +157,7 @@
 				}
 				else if(terms_get('terms_display') == TERMS_DISP_POST)
 				{
-					$sql = 'SELECT COUNT(post_id) AS count FROM ' . POSTS_TABLE . ' WHERE post_id = '.(int) terms_get('terms_post');
+					$sql = 'SELECT COUNT(post_id) AS count FROM ' . POSTS_TABLE . ' WHERE post_id = ' . (int) terms_get('terms_post');
 					$result = $db->sql_query($sql);
 					$row = $db->sql_fetchrow($result);
 					$db->sql_freeresult($result);
@@ -169,7 +171,9 @@
 					}
 					else
 					{
-						$sql = 'SELECT post_text,bbcode_uid,bbcode_bitfield,enable_bbcode,enable_smilies,enable_magic_url FROM ' . POSTS_TABLE . ' WHERE post_id = '.(int) terms_get('terms_post');
+						$sql = 'SELECT post_text,bbcode_uid,bbcode_bitfield,enable_bbcode,enable_smilies,enable_magic_url
+								FROM ' . POSTS_TABLE . '
+								WHERE post_id = ' . (int) terms_get('terms_post');
 						$result = $db->sql_query($sql);
 						$row = $db->sql_fetchrow($result);
 						$db->sql_freeresult($result);
@@ -188,7 +192,9 @@
 			<edit>
 				<find><![CDATA[					'L_TERMS_OF_USE'	=> sprintf($user->lang['TERMS_OF_USE_CONTENT'], $config['sitename'], generate_board_url()),]]></find>
 				<action type="replace-with"><![CDATA[					//-- Modification of Terms of Use - Delete BEGIN --\\
+					/*
 					//'L_TERMS_OF_USE'	=> sprintf($user->lang['TERMS_OF_USE_CONTENT'], $config['sitename'], generate_board_url()),
+					*/
 					//-- Modification of Terms of Use - Delete END --\\]]></action>
 			</edit>
 		</open>
