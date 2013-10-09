@@ -33,11 +33,6 @@ class acp_terms
 			include($phpbb_root_path.'includes/functions_terms.'.$phpEx);
 		}
 		
-		if (!defined('TERMS_INC'))
-		{
-			include($phpbb_root_path.'includes/constants_terms.'.$phpEx);
-		}
-		
 		$update = request_var('update', '');
 
 

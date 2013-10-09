@@ -47,7 +47,6 @@
 			<file from="root/adm/style/acp_terms.html" to="adm/style/acp_terms.html"/>
 			<file from="root/includes/acp/acp_terms.php" to="includes/acp/acp_terms.php"/>
 			<file from="root/includes/acp/info/acp_terms.php" to="includes/acp/info/acp_terms.php"/>
-			<file from="root/includes/constants_terms.php" to="includes/constants_terms.php"/>
 			<file from="root/includes/functions_terms.php" to="includes/functions_terms.php"/>
 			<file from="root/install/index.php" to="install/index.php"/>
 			<file from="root/language/en/mods/info_acp_terms.php" to="language/en/mods/info_acp_terms.php"/>
@@ -66,12 +65,6 @@
 			{
 				include($phpbb_root_path . 'includes/functions_terms.' . $phpEx);
 			}
-
-			if (!defined('TERMS_INC'))
-			{
-				include($phpbb_root_path . 'includes/constants_terms.' . $phpEx);
-			}
-
 
 			if(terms_get('terms_display') == TERMS_DISP_USER)
 			{
@@ -148,12 +141,6 @@
 				{
 					include($phpbb_root_path . 'includes/functions_terms.' . $phpEx);
 				}
-				
-				if (!defined('TERMS_INC'))
-				{
-					include($phpbb_root_path . 'includes/constants_terms.' . $phpEx);
-				}
-
 
 				if(terms_get('terms_display') == TERMS_DISP_USER)
 				{
@@ -202,6 +189,17 @@
 					//'L_TERMS_OF_USE'	=> sprintf($user->lang['TERMS_OF_USE_CONTENT'], $config['sitename'], generate_board_url()),
 					*/
 					//-- Modification of Terms of Use - Delete END --\\]]></action>
+			</edit>
+		</open>
+		<open src="includes/constants.php">
+			<edit>
+				<find><![CDATA[?>]]></find>
+				<action type="before-add"><![CDATA[//-- Modification of Terms of Use - Add BEGIN --\\
+define('TERMS_DISP_DEFAUT', 0);
+define('TERMS_DISP_USER', 1);
+define('TERMS_DISP_POST', 2);
+//-- Modification of Terms of Use - Add END --\\
+]]></action>
 			</edit>
 		</open>
 		<php-installer><![CDATA[install/index.php]]></php-installer>
