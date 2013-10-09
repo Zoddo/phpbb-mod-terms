@@ -19,7 +19,13 @@ if (!defined('IN_PHPBB'))
 //Update the configuration
 function terms_update($lang, array $sql_ary)
 {
-	global $db, $cache;
+	global $db, $cache, $config;
+	
+	// Check if installed
+	if(!isset($config['terms_version']))
+	{
+		return false;
+	}
 
 	$sql = 'UPDATE ' . LANG_TABLE . '
 		SET ' . $db->sql_build_array('UPDATE', $sql_ary) . "
@@ -37,7 +43,13 @@ function terms_update($lang, array $sql_ary)
 //Get the configuration
 function terms_get($value)
 {
-	global $db, $cache, $user;
+	global $db, $cache, $user, $config;
+	
+	// Check if installed
+	if(!isset($config['terms_version']))
+	{
+		return false;
+	}
 	
 	$cache_ary = $cache->get('terms');
 	if(!isset($cache_ary[$user->data['user_lang']][$value]))
