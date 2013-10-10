@@ -9,6 +9,14 @@
 */
 
 /**
+* @ignore
+*/
+if (!defined('IN_PHPBB'))
+{
+   exit;
+}
+
+/**
 * @package module_install
 */
 class acp_terms_info
