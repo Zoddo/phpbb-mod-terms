@@ -76,10 +76,9 @@
 					FROM ' . POSTS_TABLE . '
 					WHERE post_id = ' . (int) terms_get('terms_post');
 				$result = $db->sql_query($sql);
-				$row = $db->sql_fetchrow($result);
-				$db->sql_freeresult($result);
+				$row = (int) $db->sql_fetchfield('count');
 
-				if(empty($row['count']))
+				if(empty($row))
 				{
 					add_log('critical', 'LOG_TERMS_TOPIC_NOT_FOUND', terms_get('terms_post'), $user->data['user_lang']);
 					terms_update($user->data['user_lang'], array('terms_display' => TERMS_DISP_DEFAUT));
@@ -90,7 +89,7 @@
 				{
 					$sql = 'SELECT post_text,bbcode_uid,bbcode_bitfield,enable_bbcode,enable_smilies,enable_magic_url
 						FROM ' . POSTS_TABLE . '
-						WHERE post_id = '.(int) terms_get('terms_post');
+						WHERE post_id = ' . (int) terms_get('terms_post');
 					$result = $db->sql_query($sql);
 					$row = $db->sql_fetchrow($result);
 					$db->sql_freeresult($result);
@@ -152,10 +151,9 @@
 						FROM ' . POSTS_TABLE . '
 						WHERE post_id = ' . (int) terms_get('terms_post');
 					$result = $db->sql_query($sql);
-					$row = $db->sql_fetchrow($result);
-					$db->sql_freeresult($result);
+					$row = (int) $db->sql_fetchfield('count');
 
-					if(empty($row['count']))
+					if(empty($row))
 					{
 						add_log('critical', 'LOG_TERMS_TOPIC_NOT_FOUND', terms_get('terms_post'), $user->data['user_lang']);
 						terms_update($user->data['user_lang'], array('terms_display' => TERMS_DISP_DEFAUT));
