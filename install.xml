@@ -48,7 +48,7 @@
 			<file from="root/includes/acp/acp_terms.php" to="includes/acp/acp_terms.php"/>
 			<file from="root/includes/acp/info/acp_terms.php" to="includes/acp/info/acp_terms.php"/>
 			<file from="root/includes/functions_terms.php" to="includes/functions_terms.php"/>
-			<file from="root/install/index.php" to="install/index.php"/>
+			<file from="root/terms_install.php" to="terms_install.php"/>
 			<file from="root/language/en/mods/info_acp_terms.php" to="language/en/mods/info_acp_terms.php"/>
 			<file from="root/language/en/mods/permissions_terms.php" to="language/en/mods/permissions_terms.php"/>
 			<file from="root/umil/*.*" to="umil/*.*"/>
@@ -202,6 +202,6 @@ define('TERMS_DISP_POST', 2);
 ]]></action>
 			</edit>
 		</open>
-		<php-installer><![CDATA[install/index.php]]></php-installer>
+		<php-installer><![CDATA[terms_install.php]]></php-installer>
 	</action-group>
 </mod>
