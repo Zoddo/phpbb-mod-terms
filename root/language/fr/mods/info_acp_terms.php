@@ -55,7 +55,7 @@ $lang = array_merge($lang, array(
 
 $lang = array_merge($lang, array(
 	'LOG_TERMS_UPDATE'			=> '<strong>Les conditions d’utilisation ont été mises à jour</strong>',
-	'LOG_TERMS_TOPIC_NOT_FOUND'	=> 'Le message ayant l’ID <strong>%d</strong> est introuvable.<br />» Remise en place des conditions d’utilisation par défaut pour la langue <strong>%s</strong>.',
+	'LOG_TERMS_TOPIC_NOT_FOUND'	=> 'Le message ayant l’ID <strong>%1$d</strong> est introuvable.<br />» Remise en place des conditions d’utilisation par défaut pour la langue <strong>%2$s</strong>.',
 ));
 
 ?>

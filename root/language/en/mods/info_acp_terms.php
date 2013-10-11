@@ -55,7 +55,7 @@ $lang = array_merge($lang, array(
 
 $lang = array_merge($lang, array(
 	'LOG_TERMS_UPDATE'			=> '<strong>Terms of use have been updated</strong>',
-	'LOG_TERMS_TOPIC_NOT_FOUND'	=> 'Missing post having the ID <strong>%d</strong>.<br />» Putting back default terms of use of the language : <strong>%s</strong>.',
+	'LOG_TERMS_TOPIC_NOT_FOUND'	=> 'Missing post having the ID <strong>%1$d</strong>.<br />» Putting back default terms of use of the language : <strong>%2$s</strong>.',
 ));
 
 ?>
