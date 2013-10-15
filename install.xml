@@ -184,7 +184,7 @@
 				<find><![CDATA[					'L_TERMS_OF_USE'	=> sprintf($user->lang['TERMS_OF_USE_CONTENT'], $config['sitename'], generate_board_url()),]]></find>
 				<action type="replace-with"><![CDATA[					//-- Modification of Terms of Use - Delete BEGIN --\\
 					/*
-					//'L_TERMS_OF_USE'	=> sprintf($user->lang['TERMS_OF_USE_CONTENT'], $config['sitename'], generate_board_url()),
+					'L_TERMS_OF_USE'	=> sprintf($user->lang['TERMS_OF_USE_CONTENT'], $config['sitename'], generate_board_url()),
 					*/
 					//-- Modification of Terms of Use - Delete END --\\]]></action>
 			</edit>
