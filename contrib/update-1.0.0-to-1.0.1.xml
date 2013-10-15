@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
+<!--NOTICE: Please open this file in your web browser. If presented with a security warning, you may safely tell it to allow the blocked content.-->
+<!--For security purposes, please check: https://www.phpbb.com/mods/ for the latest version of this MOD.\nAlthough MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD.\nNo support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://www.phpbb.com/mods/xml/modx-1.2.6.xsd">
+	<header>
+		<meta name="generator" content="MODX file generated with PP MODX Creator 1.2.6 by tumba25 (phpBB version)"/>
+		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
+		<title lang="en"><![CDATA[Modification of Terms of Use (Update 1.0.0 to 1.0.1)]]></title>
+		<title lang="fr"><![CDATA[Modification des conditions d’utilisation (Mise à jour 1.0.0 vers 1.0.1)]]></title>
+		<description lang="en"><![CDATA[This MOD allows to modify terms of use]]></description>
+		<description lang="fr"><![CDATA[Ce MOD permet de modifier les conditions d’utilisation.]]></description>
+		<github><![CDATA[https://github.com/Zoddo/phpbb-mod-terms]]></github>
+		<author-group>
+			<author>
+				<username><![CDATA[Zoddo]]></username>
+				<email><![CDATA[zoddo.ino@gmail.com]]></email>
+				<contributions-group>
+					<contributions status="current" from="2013-08-01" position="Main Developer"/>
+				</contributions-group>
+			</author>
+		</author-group>
+		<mod-version>1.0.1</mod-version>
+		<installation>
+			<level>easy</level>
+			<time>300</time>
+			<target-version>3.0.12</target-version>
+		</installation>
+		<link-group>
+			<link type="parent" href="../install.xml" lang="en">Install file</link>
+			<link type="parent" href="../install.xml" lang="fr">Fichier d'installation</link>
+			<link type="contrib" href="update-1.0.0-to-1.0.1-fr.xml" lang="en">Update (french language files) 1.0.0 to 1.0.1</link>
+			<link type="contrib" href="update-1.0.0-to-1.0.1-fr.xml" lang="fr">Mise à jour (fichiers de langue français) 1.0.0 vers 1.0.1</link>
+		</link-group>
+	</header>
+	<action-group>
+		<copy>
+			<file from="root/terms_install.php" to="terms_install.php"/>
+		</copy>
+		<delete>
+			<file name="includes/constants_terms.php"/>
+		</delete>
+		<open src="ucp.php">
+			<edit>
+				<remove><![CDATA[
+
+			if (!defined('TERMS_INC'))
+			{
+				include($phpbb_root_path . 'includes/constants_terms.' . $phpEx);
+			}]]></remove>
+			</edit>
+			<edit>
+				<find><![CDATA[				$sql = 'SELECT COUNT(post_id) AS count FROM ' . POSTS_TABLE . ' WHERE post_id = '.(int) terms_get('terms_post');]]></find>
+				<action type="replace-with"><![CDATA[				$sql = 'SELECT COUNT(post_id) AS count
+					FROM ' . POSTS_TABLE . '
+					WHERE post_id = ' . (int) terms_get('terms_post');]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[				$row = $db->sql_fetchrow($result);
+				$db->sql_freeresult($result);]]></find>
+				<action type="replace-with"><![CDATA[				$row = (int) $db->sql_fetchfield('count');]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[				if(empty($row['count']))]]></find>
+				<action type="replace-with"><![CDATA[				if(empty($row))]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[					$sql = 'SELECT post_text,bbcode_uid,bbcode_bitfield,enable_bbcode,enable_smilies,enable_magic_url FROM ' . POSTS_TABLE . ' WHERE post_id = '.(int) terms_get('terms_post');]]></find>
+				<action type="replace-with"><![CDATA[					$sql = 'SELECT post_text,bbcode_uid,bbcode_bitfield,enable_bbcode,enable_smilies,enable_magic_url
+						FROM ' . POSTS_TABLE . '
+						WHERE post_id = ' . (int) terms_get('terms_post');]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[			//'AGREEMENT_TEXT'		=> sprintf($user->lang[$message], $config['sitename'], generate_board_url()),]]></find>
+				<action type="replace-with"><![CDATA[			/*
+			'AGREEMENT_TEXT'		=> sprintf($user->lang[$message], $config['sitename'], generate_board_url()),
+			*/]]></action>
+			</edit>
+		</open>
+		<open src="adm/style/acp_terms.html">
+			<edit>
+				<find><![CDATA[<!-- INCLUDE overall_header.html -->]]></find>
+				<action type="after-add"><![CDATA[
+<script type="text/javascript">
+// ]]>&lt;![CDATA[<![CDATA[
+<!-- BEGIN lang -->
+   var terms_prefill_{lang.DIR} = '{lang.DEFAUT_TERM}';
+<!-- END lang -->
+// ]]>]]&gt;<![CDATA[
+</script>]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[				<dt><label for="terms_{lang.DIR}">{L_ACP_TERMS_TOPIC}:</label><br />{L_ACP_TERMS_TOPIC_EXPLAIN}</dt>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[for="terms_{lang.DIR}"]]></inline-find>
+					<inline-action type="replace-with"><![CDATA[for="post_{lang.DIR}"]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<find><![CDATA[					<label><input type="text" size="6" name="post[{lang.DIR}]" id="post[{lang.DIR}]" value="{lang.TERMS_POST_ID}" /></label>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[id="post[{lang.DIR}]"]]></inline-find>
+					<inline-action type="replace-with"><![CDATA[id="post_{lang.DIR}"]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<find><![CDATA[					<label><input type="button" class="button2" id="prefill_{lang.DIR}" name="prefill[{lang.DIR}]" value="{L_ACP_TERMS_PREFILL}" onclick="terms_{lang.DIR}.value='{lang.DEFAUT_TERM}'"/></label>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[value='{lang.DEFAUT_TERM}']]></inline-find>
+					<inline-action type="replace-with"><![CDATA[value=terms_prefill_{lang.DIR}]]></inline-action>
+				</inline-edit>
+			</edit>
+		</open>
+		<open src="includes/constants.php">
+			<edit>
+				<find><![CDATA[?>]]></find>
+				<action type="before-add"><![CDATA[//-- Modification of Terms of Use - Add BEGIN --\\
+define('TERMS_DISP_DEFAUT', 0);
+define('TERMS_DISP_USER', 1);
+define('TERMS_DISP_POST', 2);
+//-- Modification of Terms of Use - Add END --\\
+]]></action>
+			</edit>
+		</open>
+		<open src="includes/functions_terms.php">
+			<edit>
+				<find><![CDATA[	global $db, $cache;]]></find>
+				<action type="replace-with"><![CDATA[	global $db, $cache, $config;
+
+	// Check if installed
+	if(!isset($config['terms_version']))
+	{
+		return false;
+	}]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[	$sql = 'UPDATE ' . LANG_TABLE . ' SET ' . $db->sql_build_array('UPDATE', $sql_ary) . " WHERE lang_dir = '".$db->sql_escape($lang)."'";]]></find>
+				<action type="replace-with"><![CDATA[	$sql = 'UPDATE ' . LANG_TABLE . '
+		SET ' . $db->sql_build_array('UPDATE', $sql_ary) . "
+		WHERE lang_dir = '".$db->sql_escape($lang)."'";]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[	global $db, $cache, $user;]]></find>
+				<action type="replace-with"><![CDATA[	global $db, $cache, $user, $config;
+
+	// Check if installed
+	if(!isset($config['terms_version']))
+	{
+		return false;
+	}]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[		$sql = 'SELECT * FROM ' . LANG_TABLE . " WHERE lang_dir = '".$db->sql_escape($user->data['user_lang'])."'";]]></find>
+				<action type="replace-with"><![CDATA[		$sql = 'SELECT * FROM ' . LANG_TABLE . "
+			WHERE lang_dir = '".$db->sql_escape($user->data['user_lang'])."'";]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[	$return = str_replace(array('<br />', "\n"), array('', '\n'), $return);]]></find>
+				<action type="replace-with"><![CDATA[	$return = str_replace(array('<br />', "\n", "\r", "'"), array('', '\n', '', "\'"), $return);]]></action>
+			</edit>
+		</open>
+		<open src="includes/acp/acp_terms.php">
+			<edit>
+				<remove><![CDATA[		if (!defined('TERMS_INC'))
+		{
+			include($phpbb_root_path.'includes/constants_terms.'.$phpEx);
+		}
+]]></remove>
+			</edit>
+			<edit>
+				<find><![CDATA[					$sql = 'SELECT COUNT(post_id) AS count FROM ' . POSTS_TABLE . ' WHERE post_id = '.(int) $config_post[$lng];]]></find>
+				<action type="replace-with"><![CDATA[					$sql = 'SELECT COUNT(post_id) AS count
+						FROM ' . POSTS_TABLE . '
+						WHERE post_id = '.(int) $config_post[$lng];]]></action>
+			</edit>
+		</open>
+		<open src="includes/acp/info/acp_terms.php">
+			<edit>
+				<find><![CDATA[/**
+* @ignore
+*/]]></find>
+				<action type="after-add"><![CDATA[if (!defined('IN_PHPBB'))
+{
+   exit;
+}
+]]></action>
+			</edit>
+		</open>
+		<open src="includes/ucp/ucp_register.php">
+			<edit>
+				<remove><![CDATA[
+				
+				if (!defined('TERMS_INC'))
+				{
+					include($phpbb_root_path . 'includes/constants_terms.' . $phpEx);
+				}
+]]></remove>
+			</edit>
+			<edit>
+				<find><![CDATA[					$sql = 'SELECT COUNT(post_id) AS count FROM ' . POSTS_TABLE . ' WHERE post_id = '.(int) terms_get('terms_post');]]></find>
+				<action type="replace-with"><![CDATA[					$sql = 'SELECT COUNT(post_id) AS count
+						FROM ' . POSTS_TABLE . '
+						WHERE post_id = ' . (int) terms_get('terms_post');]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[					$row = $db->sql_fetchrow($result);
+					$db->sql_freeresult($result);]]></find>
+				<action type="replace-with"><![CDATA[					$row = (int) $db->sql_fetchfield('count');]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[					if(empty($row['count']))]]></find>
+				<action type="replace-with"><![CDATA[					if(empty($row))]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[						$sql = 'SELECT post_text,bbcode_uid,bbcode_bitfield,enable_bbcode,enable_smilies,enable_magic_url FROM ' . POSTS_TABLE . ' WHERE post_id = '.(int) terms_get('terms_post');]]></find>
+				<action type="replace-with"><![CDATA[						$sql = 'SELECT post_text,bbcode_uid,bbcode_bitfield,enable_bbcode,enable_smilies,enable_magic_url
+							FROM ' . POSTS_TABLE . '
+							WHERE post_id = ' . (int) terms_get('terms_post');]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[					//'L_TERMS_OF_USE'	=> sprintf($user->lang['TERMS_OF_USE_CONTENT'], $config['sitename'], generate_board_url()),]]></find>
+				<action type="replace-with"><![CDATA[					/*
+					'L_TERMS_OF_USE'	=> sprintf($user->lang['TERMS_OF_USE_CONTENT'], $config['sitename'], generate_board_url()),
+					*/]]></action>
+			</edit>
+		</open>
+		<open src="language/en/mods/info_acp_terms.php">
+			<edit>
+				<find><![CDATA[	'LOG_TERMS_TOPIC_NOT_FOUND'	=> 'Missing post having the ID <strong>%d</strong>.<br />» Putting back default terms of use of the language : <strong>%s</strong>.',]]></find>
+				<action type="replace-with"><![CDATA[	'LOG_TERMS_TOPIC_NOT_FOUND'	=> 'Missing post having the ID <strong>%1$d</strong>.<br />» Putting back default terms of use of the language : <strong>%2$s</strong>.',]]></action>
+			</edit>
+		</open>
+		<php-installer><![CDATA[terms_install.php]]></php-installer>
+	</action-group>
+</mod>

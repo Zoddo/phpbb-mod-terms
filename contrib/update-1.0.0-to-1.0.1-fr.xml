@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
+<!--NOTICE: Please open this file in your web browser. If presented with a security warning, you may safely tell it to allow the blocked content.-->
+<!--For security purposes, please check: https://www.phpbb.com/mods/ for the latest version of this MOD.\nAlthough MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD.\nNo support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://www.phpbb.com/mods/xml/modx-1.2.6.xsd">
+	<header>
+		<meta name="generator" content="MODX file generated with PP MODX Creator 1.2.6 by tumba25 (phpBB version)"/>
+		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
+		<title lang="en"><![CDATA[Modification of Terms of Use (Update 1.0.0 to 1.0.1)]]></title>
+		<title lang="fr"><![CDATA[Modification des conditions d’utilisation (Mise à jour 1.0.0 vers 1.0.1)]]></title>
+		<description lang="en"><![CDATA[This MOD allows to modify terms of use]]></description>
+		<description lang="fr"><![CDATA[Ce MOD permet de modifier les conditions d’utilisation.]]></description>
+		<github><![CDATA[https://github.com/Zoddo/phpbb-mod-terms]]></github>
+		<author-group>
+			<author>
+				<username><![CDATA[Zoddo]]></username>
+				<email><![CDATA[zoddo.ino@gmail.com]]></email>
+				<contributions-group>
+					<contributions status="current" from="2013-08-01" position="Main Developer"/>
+				</contributions-group>
+			</author>
+		</author-group>
+		<mod-version>1.0.1</mod-version>
+		<installation>
+			<level>easy</level>
+			<time>120</time>
+			<target-version>3.0.12</target-version>
+		</installation>
+		<link-group>
+			<link type="parent" href="update-1.0.0-to-1.0.1.xml" lang="en">Update 1.0.0 to 1.0.1</link>
+			<link type="parent" href="update-1.0.0-to-1.0.1.xml" lang="fr">Mise à jour 1.0.0 vers 1.0.1</link>
+		</link-group>
+	</header>
+	<action-group>
+		<open src="language/fr/mods/info_acp_terms.php">
+			<edit>
+				<find><![CDATA[	'ACP_TERMS_TYPE_EXPLAIN'	=> '- Choisissez “Par défaut” pour laisser les conditions d’utilisation par défaut.<br />- Choisissez “Message” pour utiliser le contenu d’un message comme conditions d’utilisation.<br />- Choisissez “Tel que défini” pour utiliser le texte écrit dans la case juste en dessous comme conditions d’utilisation.',]]></find>
+				<action type="replace-with"><![CDATA[	'ACP_TERMS_TYPE_EXPLAIN'	=> '- Choisissez «Par défaut» pour laisser les conditions d’utilisation par défaut.<br />- Choisissez «Message» pour utiliser le contenu d’un message comme conditions d’utilisation.<br />- Choisissez «Tel que défini» pour utiliser le texte écrit dans la case juste en dessous comme conditions d’utilisation.',]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[	'ACP_TERMS_TOPIC_EXPLAIN'	=> 'Si vous avez choisi “Message” juste au dessus, entrez ici l’ID du message à utiliser comme conditions d’utilisation.',]]></find>
+				<action type="replace-with"><![CDATA[	'ACP_TERMS_TOPIC_EXPLAIN'	=> 'Si vous avez choisi «Message» juste au dessus, entrez ici l’ID du message à utiliser comme conditions d’utilisation.',]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[	'ACP_TERMS_EDIT_EXPLAIN'	=> 'Si vous avez choisi “Tel que défini” juste au dessus, entrez les conditions d’utilisation à afficher ici. Vous pouvez préremplir la case avec les conditions d’utilisation par défaut de phpBB en cliquant sur le bouton “Préremplir avec les conditions d’utilisation par défaut”.',]]></find>
+				<action type="replace-with"><![CDATA[	'ACP_TERMS_EDIT_EXPLAIN'	=> 'Si vous avez choisi «Tel que défini» juste au dessus, entrez les conditions d’utilisation à afficher ici. Vous pouvez préremplir la case avec les conditions d’utilisation par défaut de phpBB en cliquant sur le bouton «Préremplir avec les conditions d’utilisation par défaut».',]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[	'LOG_TERMS_TOPIC_NOT_FOUND'	=> 'Le message ayant l’ID <strong>%d</strong> est introuvable.<br />» Remise en place des conditions d’utilisation par défaut pour la langue <strong>%s</strong>.',]]></find>
+				<action type="replace-with"><![CDATA[	'LOG_TERMS_TOPIC_NOT_FOUND'	=> 'Le message ayant l’ID <strong>%1$d</strong> est introuvable.<br />» Remise en place des conditions d’utilisation par défaut pour la langue <strong>%2$s</strong>.',]]></action>
+			</edit>
+		</open>
+	</action-group>
+</mod>

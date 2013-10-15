@@ -10,6 +10,7 @@
 		<title lang="fr"><![CDATA[Modification des conditions d’utilisation]]></title>
 		<description lang="en"><![CDATA[This MOD allows to modify terms of use]]></description>
 		<description lang="fr"><![CDATA[Ce MOD permet de modifier les conditions d’utilisation.]]></description>
+		<github><![CDATA[https://github.com/Zoddo/phpbb-mod-terms]]></github>
 		<author-group>
 			<author>
 				<username><![CDATA[Zoddo]]></username>
@@ -19,13 +20,23 @@
 				</contributions-group>
 			</author>
 		</author-group>
-		<mod-version>1.0.0</mod-version>
+		<mod-version>1.0.1</mod-version>
 		<installation>
 			<level>easy</level>
-			<time>120</time>
-			<target-version>3.0.11</target-version>
+			<time>1</time>
+			<target-version>3.0.12</target-version>
 		</installation>
 		<history>
+			<entry>
+				<date>2013-10-15</date>
+				<rev-version>1.0.1</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Fix quote symbols.]]></change>
+				</changelog>
+				<changelog lang="fr">
+					<change><![CDATA[Correction des symboles de citation.]]></change>
+				</changelog>
+			</entry>
 			<entry>
 				<date>2013-08-01</date>
 				<rev-version>1.0.0</rev-version>

@@ -10,6 +10,7 @@
 		<title lang="fr"><![CDATA[Modification des conditions d’utilisation]]></title>
 		<description lang="en"><![CDATA[This MOD allows to modify terms of use]]></description>
 		<description lang="fr"><![CDATA[Ce MOD permet de modifier les conditions d’utilisation.]]></description>
+		<github><![CDATA[https://github.com/Zoddo/phpbb-mod-terms]]></github>
 		<author-group>
 			<author>
 				<username><![CDATA[Zoddo]]></username>
@@ -19,13 +20,35 @@
 				</contributions-group>
 			</author>
 		</author-group>
-		<mod-version>1.0.0</mod-version>
+		<mod-version>1.0.1</mod-version>
 		<installation>
 			<level>easy</level>
-			<time>120</time>
-			<target-version>3.0.11</target-version>
+			<time>5</time>
+			<target-version>3.0.12</target-version>
 		</installation>
 		<history>
+			<entry>
+				<date>2013-10-15</date>
+				<rev-version>1.0.1</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Fix a bug on the "pre-fill" button on certain languages.]]></change>
+					<change><![CDATA[Optimizing the layout code.]]></change>
+					<change><![CDATA[Fix default value in *INT columns.]]></change>
+					<change><![CDATA[Fix incorrect label in ACP template.]]></change>
+					<change><![CDATA[Delete constants_terms.php]]></change>
+					<change><![CDATA[Fix notices and errors if the install file was not execute.]]></change>
+					<change><![CDATA[Moving install file to root.]]></change>
+				</changelog>
+				<changelog lang="fr">
+					<change><![CDATA[Correction d'un bug sur le bouton "pré-remplir" sur certaines langues.]]></change>
+					<change><![CDATA[Optimisation de la mise en page du code.]]></change>
+					<change><![CDATA[Correction de la valeur par défaut dans les colonnes *INT.]]></change>
+					<change><![CDATA[Correction d'un <label> erronée dans le template ACP.]]></change>
+					<change><![CDATA[Suppression de constants_terms.php]]></change>
+					<change><![CDATA[Correction des notices et des erreurs si le fichier d'installation n'as pas été exécuté.]]></change>
+					<change><![CDATA[Déplacement du fichier d'installation à la racine.]]></change>
+				</changelog>
+			</entry>
 			<entry>
 				<date>2013-08-01</date>
 				<rev-version>1.0.0</rev-version>
@@ -40,6 +63,8 @@
 		<link-group>
 			<link type="language" href="contrib/fr.xml" lang="en">French Translation</link>
 			<link type="language" href="contrib/fr.xml" lang="fr">Traduction française</link>
+			<link type="contrib" href="contrib/update-1.0.0-to-1.0.1.xml" lang="en">Update 1.0.0 to 1.0.1</link>
+			<link type="contrib" href="contrib/update-1.0.0-to-1.0.1.xml" lang="fr">Mise à jour 1.0.0 vers 1.0.1</link>
 		</link-group>
 	</header>
 	<action-group>
