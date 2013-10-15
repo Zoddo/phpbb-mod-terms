@@ -56,6 +56,10 @@ $language_file = 'mods/info_acp_terms';
 * The version numbering must otherwise be compatible with the version_compare function - http://php.net/manual/en/function.version-compare.php
 */
 $versions = array(
+	'1.0.1'	=> array(
+		'cache_purge' => array(''),
+	),
+	
 	'1.0.0' => array(
 
 		'table_column_add' => array(
