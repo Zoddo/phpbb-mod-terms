@@ -119,6 +119,17 @@
 			//-- Modification of Terms of Use - Delete END --\\]]></action>
 			</edit>
 		</open>
+				<open src="includes/constants.php">
+			<edit>
+				<find><![CDATA[?>]]></find>
+				<action type="before-add"><![CDATA[//-- Modification of Terms of Use - Add BEGIN --\\
+define('TERMS_DISP_DEFAUT', 0);
+define('TERMS_DISP_USER', 1);
+define('TERMS_DISP_POST', 2);
+//-- Modification of Terms of Use - Add END --\\
+]]></action>
+			</edit>
+		</open>
 		<open src="includes/acp/acp_language.php">
 			<edit>
 				<find><![CDATA[					'lang_author'		=> $lang_pack['author']]]></find>
@@ -187,17 +198,6 @@
 					'L_TERMS_OF_USE'	=> sprintf($user->lang['TERMS_OF_USE_CONTENT'], $config['sitename'], generate_board_url()),
 					*/
 					//-- Modification of Terms of Use - Delete END --\\]]></action>
-			</edit>
-		</open>
-		<open src="includes/constants.php">
-			<edit>
-				<find><![CDATA[?>]]></find>
-				<action type="before-add"><![CDATA[//-- Modification of Terms of Use - Add BEGIN --\\
-define('TERMS_DISP_DEFAUT', 0);
-define('TERMS_DISP_USER', 1);
-define('TERMS_DISP_POST', 2);
-//-- Modification of Terms of Use - Add END --\\
-]]></action>
 			</edit>
 		</open>
 		<php-installer><![CDATA[terms_install.php]]></php-installer>
