@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
 <!--NOTICE: Please open this file in your web browser. If presented with a security warning, you may safely tell it to allow the blocked content.-->
-<!--For security purposes, please check: https://www.phpbb.com/mods/ for the latest version of this MOD.\nAlthough MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD.\nNo support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<!--For security purposes, please check: https://www.phpbb.com/mods/ for the latest version of this MOD.\nAlthough MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD.\nNo support will be given for MODs not found within the MODs Database which can be found at https://www.phpbb.com/mods/-->
 <mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://www.phpbb.com/mods/xml/modx-1.2.6.xsd">
 	<header>
 		<meta name="generator" content="MODX file generated with PP MODX Creator 1.2.6 by tumba25 (phpBB version)"/>
@@ -35,6 +35,11 @@
 	</header>
 	<action-group>
 		<copy>
+			<file from="root/adm/style/acp_terms.html" to="adm/style/acp_terms.html"/>
+			<file from="root/includes/functions_terms.php" to="includes/functions_terms.php"/>
+			<file from="root/includes/acp/acp_terms.php" to="includes/acp/acp_terms.php"/>
+			<file from="root/includes/acp/info/acp_terms.php" to="includes/acp/info/acp_terms.php"/>
+			<file from="root/language/en/mods/info_acp_terms.php" to="language/en/mods/info_acp_terms.php"/>
 			<file from="root/terms_install.php" to="terms_install.php"/>
 		</copy>
 		<delete>
@@ -77,40 +82,6 @@
 			*/]]></action>
 			</edit>
 		</open>
-		<open src="adm/style/acp_terms.html">
-			<edit>
-				<find><![CDATA[<!-- INCLUDE overall_header.html -->]]></find>
-				<action type="after-add"><![CDATA[
-<script type="text/javascript">
-// ]]>&lt;![CDATA[<![CDATA[
-<!-- BEGIN lang -->
-   var terms_prefill_{lang.DIR} = '{lang.DEFAUT_TERM}';
-<!-- END lang -->
-// ]]>]]&gt;<![CDATA[
-</script>]]></action>
-			</edit>
-			<edit>
-				<find><![CDATA[				<dt><label for="terms_{lang.DIR}">{L_ACP_TERMS_TOPIC}:</label><br />{L_ACP_TERMS_TOPIC_EXPLAIN}</dt>]]></find>
-				<inline-edit>
-					<inline-find><![CDATA[for="terms_{lang.DIR}"]]></inline-find>
-					<inline-action type="replace-with"><![CDATA[for="post_{lang.DIR}"]]></inline-action>
-				</inline-edit>
-			</edit>
-			<edit>
-				<find><![CDATA[					<label><input type="text" size="6" name="post[{lang.DIR}]" id="post[{lang.DIR}]" value="{lang.TERMS_POST_ID}" /></label>]]></find>
-				<inline-edit>
-					<inline-find><![CDATA[id="post[{lang.DIR}]"]]></inline-find>
-					<inline-action type="replace-with"><![CDATA[id="post_{lang.DIR}"]]></inline-action>
-				</inline-edit>
-			</edit>
-			<edit>
-				<find><![CDATA[					<label><input type="button" class="button2" id="prefill_{lang.DIR}" name="prefill[{lang.DIR}]" value="{L_ACP_TERMS_PREFILL}" onclick="terms_{lang.DIR}.value='{lang.DEFAUT_TERM}'"/></label>]]></find>
-				<inline-edit>
-					<inline-find><![CDATA[value='{lang.DEFAUT_TERM}']]></inline-find>
-					<inline-action type="replace-with"><![CDATA[value=terms_prefill_{lang.DIR}]]></inline-action>
-				</inline-edit>
-			</edit>
-		</open>
 		<open src="includes/constants.php">
 			<edit>
 				<find><![CDATA[?>]]></find>
@@ -119,70 +90,6 @@ define('TERMS_DISP_DEFAUT', 0);
 define('TERMS_DISP_USER', 1);
 define('TERMS_DISP_POST', 2);
 //-- Modification of Terms of Use - Add END --\\
-]]></action>
-			</edit>
-		</open>
-		<open src="includes/functions_terms.php">
-			<edit>
-				<find><![CDATA[	global $db, $cache;]]></find>
-				<action type="replace-with"><![CDATA[	global $db, $cache, $config;
-
-	// Check if installed
-	if(!isset($config['terms_version']))
-	{
-		return false;
-	}]]></action>
-			</edit>
-			<edit>
-				<find><![CDATA[	$sql = 'UPDATE ' . LANG_TABLE . ' SET ' . $db->sql_build_array('UPDATE', $sql_ary) . " WHERE lang_dir = '".$db->sql_escape($lang)."'";]]></find>
-				<action type="replace-with"><![CDATA[	$sql = 'UPDATE ' . LANG_TABLE . '
-		SET ' . $db->sql_build_array('UPDATE', $sql_ary) . "
-		WHERE lang_dir = '".$db->sql_escape($lang)."'";]]></action>
-			</edit>
-			<edit>
-				<find><![CDATA[	global $db, $cache, $user;]]></find>
-				<action type="replace-with"><![CDATA[	global $db, $cache, $user, $config;
-
-	// Check if installed
-	if(!isset($config['terms_version']))
-	{
-		return false;
-	}]]></action>
-			</edit>
-			<edit>
-				<find><![CDATA[		$sql = 'SELECT * FROM ' . LANG_TABLE . " WHERE lang_dir = '".$db->sql_escape($user->data['user_lang'])."'";]]></find>
-				<action type="replace-with"><![CDATA[		$sql = 'SELECT * FROM ' . LANG_TABLE . "
-			WHERE lang_dir = '".$db->sql_escape($user->data['user_lang'])."'";]]></action>
-			</edit>
-			<edit>
-				<find><![CDATA[	$return = str_replace(array('<br />', "\n"), array('', '\n'), $return);]]></find>
-				<action type="replace-with"><![CDATA[	$return = str_replace(array('<br />', "\n", "\r", "'"), array('', '\n', '', "\'"), $return);]]></action>
-			</edit>
-		</open>
-		<open src="includes/acp/acp_terms.php">
-			<edit>
-				<remove><![CDATA[		if (!defined('TERMS_INC'))
-		{
-			include($phpbb_root_path.'includes/constants_terms.'.$phpEx);
-		}
-]]></remove>
-			</edit>
-			<edit>
-				<find><![CDATA[					$sql = 'SELECT COUNT(post_id) AS count FROM ' . POSTS_TABLE . ' WHERE post_id = '.(int) $config_post[$lng];]]></find>
-				<action type="replace-with"><![CDATA[					$sql = 'SELECT COUNT(post_id) AS count
-						FROM ' . POSTS_TABLE . '
-						WHERE post_id = '.(int) $config_post[$lng];]]></action>
-			</edit>
-		</open>
-		<open src="includes/acp/info/acp_terms.php">
-			<edit>
-				<find><![CDATA[/**
-* @ignore
-*/]]></find>
-				<action type="after-add"><![CDATA[if (!defined('IN_PHPBB'))
-{
-   exit;
-}
 ]]></action>
 			</edit>
 		</open>
@@ -222,12 +129,6 @@ define('TERMS_DISP_POST', 2);
 				<action type="replace-with"><![CDATA[					/*
 					'L_TERMS_OF_USE'	=> sprintf($user->lang['TERMS_OF_USE_CONTENT'], $config['sitename'], generate_board_url()),
 					*/]]></action>
-			</edit>
-		</open>
-		<open src="language/en/mods/info_acp_terms.php">
-			<edit>
-				<find><![CDATA[	'LOG_TERMS_TOPIC_NOT_FOUND'	=> 'Missing post having the ID <strong>%d</strong>.<br />» Putting back default terms of use of the language : <strong>%s</strong>.',]]></find>
-				<action type="replace-with"><![CDATA[	'LOG_TERMS_TOPIC_NOT_FOUND'	=> 'Missing post having the ID <strong>%1$d</strong>.<br />» Putting back default terms of use of the language : <strong>%2$s</strong>.',]]></action>
 			</edit>
 		</open>
 		<php-installer><![CDATA[terms_install.php]]></php-installer>
