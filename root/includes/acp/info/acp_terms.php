@@ -26,7 +26,7 @@ class acp_terms_info
 		return array(
 			'filename'	=> 'acp_terms',
 			'title'		=> 'ACP_TERMS_NAME',
-			'version'	=> '1.0.0',
+			'version'	=> '1.0.1',
 			'modes'		=> array(
 				'config'	=> array('title' => 'ACP_TERMS_NAME', 'auth' => 'acl_a_terms_config', 'cat' => array('ACP_GENERAL_TASKS')),
 			),
