@@ -32,14 +32,14 @@ class acp_terms
 		{
 			include($phpbb_root_path.'includes/functions_terms.'.$phpEx);
 		}
-		
+
 		$update = request_var('update', '');
 
 
 		if(empty($update))
 		{
 			$template->assign_vars(array(
-				'TITLE'			=> $user->lang['ACP_TERMS_NAME'],
+				'TITLE'				=> $user->lang['ACP_TERMS_NAME'],
 				'TITLE_EXPLAIN'		=> $user->lang['ACP_TERMS_CONFIG_EXPLAIN']
 			));
 
@@ -51,12 +51,13 @@ class acp_terms
 			while ($row = $db->sql_fetchrow($result))
 			{
 				decode_message($row['terms'], $row['terms_bbcode_uid']);
-			
+
 				$template->assign_block_vars('lang', array(
 					'ID'			=> $row['lang_id'],
 					'ISO'			=> $row['lang_iso'],
 					'DIR'			=> $row['lang_dir'],
 					'NAME'			=> $row['lang_local_name'],
+
 					'TERMS_DEFAUT'		=> ((int)$row['terms_display'] == TERMS_DISP_DEFAUT) ? true : false,
 					'TERMS_USER'		=> ((int)$row['terms_display'] == TERMS_DISP_USER) ? true : false,
 					'TERMS_POST'		=> ((int)$row['terms_display'] == TERMS_DISP_POST) ? true : false,
@@ -73,7 +74,7 @@ class acp_terms
 			$config_type = request_var('type', array('' => 0));
 			$config_post = request_var('post', array('' => 0));
 			$config_user = request_var('terms', array('' => ''), true);
-			
+
 			//Verifications
 			foreach($config_type as $lng => $val)
 			{
@@ -103,7 +104,7 @@ class acp_terms
 					$config_type[$lng] = TERMS_DISP_DEFAUT;
 				}
 			}
-			
+
 			//Storage
 			foreach($config_type as $lng => $val)
 			{
@@ -129,7 +130,7 @@ class acp_terms
 				$uid = $bitfield = $options = ''; // will be modified by generate_text_for_storage
 				$allow_bbcode = $allow_urls = $allow_smilies = true;
 				generate_text_for_storage($val, $uid, $bitfield, $options, $allow_bbcode, $allow_urls, $allow_smilies);
-				
+
 				$sql_ary = array(
 					'terms'					=> $val,
 					'terms_bbcode_uid'		=> $uid,
